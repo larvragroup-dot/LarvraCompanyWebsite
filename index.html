@@ -1,532 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Larvra - Ascend Beyond Limits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        :root {
-            --primary-color: #00BFFF; /* DeepSkyBlue */
-            --background-dark: #0A0A1A;
-            --background-light: #1a1a3d;
-            --text-primary: #E0E0E0;
-            --text-secondary: #a0a0c0;
-            --border-color: rgba(100, 100, 150, 0.2);
-        }
+      :root {
+        --primary-color: #00bfff; /* DeepSkyBlue */
+        --primary-dark: #0099cc;
+        --background-dark: #0a0a1a;
+        --background-light: #1a1a3d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0c0;
+        --border-color: rgba(100, 100, 150, 0.2);
+      }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-primary);
+        overflow-x: hidden;
+      }
 
-        .font-orbitron {
-            font-family: 'Orbitron', sans-serif;
-        }
+      .font-orbitron {
+        font-family: "Orbitron", sans-serif;
+      }
 
-        /* Hero Section Styling */
-        #home {
-            position: relative;
-            overflow: hidden;
-        }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+      /* Hero Section Styling */
+      #home {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
 
-        /* Animated typing effect */
-        .typed-text {
-            border-right: .15em solid var(--primary-color);
-            white-space: nowrap;
-            overflow: hidden;
-            letter-spacing: .1em;
-            animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+      /* Animated typing effect */
+      .typed-text {
+        border-right: 0.15em solid var(--primary-color);
+        white-space: nowrap;
+        overflow: hidden;
+        letter-spacing: 0.1em;
+        animation: typing 3.5s steps(30, end),
+          blink-caret 0.75s step-end infinite;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
         }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+        to {
+          width: 100%;
         }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color); }
+      }
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
         }
-        
-        /* Header glassmorphism effect */
-        header {
-            background: rgba(10, 10, 26, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+        50% {
+          border-color: var(--primary-color);
         }
+      }
 
-        /* Neon glow effect for buttons and links */
-        .neon-glow-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 0 5px rgba(0, 191, 255, 0.5), 0 0 10px rgba(0, 191, 255, 0.3);
-        }
-        .neon-glow-button:hover {
-            box-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.6);
-            transform: translateY(-3px) scale(1.05);
-            background-color: #00a8e6;
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width .3s;
-            box-shadow: 0 0 5px var(--primary-color);
-        }
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
+      /* Header glassmorphism effect */
+      header {
+        background: rgba(10, 10, 26, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+      header.scrolled {
+        background: rgba(10, 10, 26, 0.95);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
 
-        /* General Card styles with a subtle glow */
-        .futuristic-card {
-            background: rgba(26, 26, 61, 0.5);
-            border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
+      /* Neon glow effect for buttons and links */
+      .neon-glow-button {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 5px rgba(0, 191, 255, 0.5),
+          0 0 10px rgba(0, 191, 255, 0.3);
+      }
+      .neon-glow-button:hover {
+        box-shadow: 0 0 15px rgba(0, 191, 255, 0.8),
+          0 0 30px rgba(0, 191, 255, 0.6);
+        transform: translateY(-3px) scale(1.05);
+        background-color: var(--primary-dark);
+      }
+      .nav-link::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s;
+        box-shadow: 0 0 5px var(--primary-color);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* General Card styles with a subtle glow */
+      .futuristic-card {
+        background: rgba(26, 26, 61, 0.5);
+        border: 1px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+      }
+      .futuristic-card:before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 191, 255, 0.1) 0%,
+          rgba(0, 191, 255, 0) 60%
+        );
+        transform: scale(0);
+        transition: transform 0.8s ease;
+      }
+      .futuristic-card:hover {
+        transform: translateY(-10px) rotateX(5deg) scale(1.02);
+        border-color: rgba(0, 191, 255, 0.5);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .futuristic-card:hover:before {
+        transform: scale(1);
+      }
+
+      /* Timeline for About section */
+      .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        background-color: var(--background-light);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+      }
+      .timeline-container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+      }
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: var(--background-dark);
+        border: 4px solid var(--primary-color);
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-content {
+        padding: 20px 30px;
+        background: var(--background-light);
+        position: relative;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+      }
+
+      /* Scroll reveal animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .reveal-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .reveal-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Animated Counters */
+      .counter {
+        font-size: 3rem;
+        font-weight: 900;
+        font-family: "Orbitron", sans-serif;
+        color: var(--primary-color);
+      }
+
+      /* Section dividers */
+      .section-divider {
+        height: 100px;
+        background: linear-gradient(
+          to top,
+          var(--background-dark),
+          transparent
+        );
+      }
+
+      /* Careers section job posting */
+      .job-posting {
+        border-left: 4px solid var(--primary-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .job-posting:hover {
+        background-color: rgba(26, 26, 61, 0.3);
+        border-left-width: 8px;
+      }
+      .job-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .job-posting.active .job-details {
+        max-height: 500px;
+      }
+
+      /* Loading spinner */
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid var(--primary-color);
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        display: none;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-        .futuristic-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, rgba(0, 191, 255, 0) 60%);
-            transform: scale(0);
-            transition: transform 0.8s ease;
+        100% {
+          transform: rotate(360deg);
         }
-        .futuristic-card:hover {
-            transform: translateY(-10px) rotateX(5deg) scale(1.02);
-            border-color: rgba(0, 191, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-        .futuristic-card:hover:before {
-            transform: scale(1);
-        }
-        
-        /* Timeline for About section */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+      }
+
+      /* Toast notification */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background: var(--background-light);
+        border-left: 4px solid var(--primary-color);
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+      .toast.show {
+        transform: translateX(0);
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 99;
+        box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        background: var(--primary-dark);
+        transform: translateY(-5px);
+      }
+
+      /* Mobile menu animation */
+      #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      #mobile-menu.open {
+        max-height: 500px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
         .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--background-light);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+          left: 31px;
         }
         .timeline-container {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
         }
-        .timeline-container.left { left: 0; }
-        .timeline-container.right { left: 50%; }
+        .timeline-container.left,
+        .timeline-container.right {
+          left: 0;
+        }
         .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -17px;
-            background-color: var(--background-dark);
-            border: 4px solid var(--primary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
+          left: 18px;
+          right: auto;
         }
-        .right::after { left: -16px; }
-        .timeline-content {
-            padding: 20px 30px;
-            background: var(--background-light);
-            position: relative;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
+        .typed-text {
+          white-space: normal;
+          border-right: none;
+          animation: none;
         }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        section {
+          padding: 4rem 0;
+        }
+        .grid {
+          gap: 1.5rem;
+        }
+      }
 
-        /* Scroll reveal animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+      @media (max-width: 640px) {
+        .hero-content h1 {
+          font-size: 2rem;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .futuristic-card {
+          padding: 1.5rem;
         }
-        .reveal-left {
-             opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right {
-             opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Animated Counters */
-        .counter {
-            font-size: 3rem;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-color);
-        }
-
-        /* Section dividers */
-        .section-divider {
-            height: 100px;
-            background: linear-gradient(to top, var(--background-dark), transparent);
-        }
-
-        /* Careers section job posting */
-        .job-posting {
-            border-left: 4px solid var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        .job-posting:hover {
-            background-color: rgba(26, 26, 61, 0.3);
-            border-left-width: 8px;
-        }
+      }
     </style>
-</head>
-<body class="antialiased">
-
+  </head>
+  <body class="antialiased">
     <!-- Header & Navigation -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#home" class="text-3xl font-bold font-orbitron text-white tracking-widest">LARVRA</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link active text-lg text-gray-200 hover:text-white transition">Home</a>
-                <a href="#about" class="nav-link text-lg text-gray-200 hover:text-white transition">About</a>
-                <a href="#solutions" class="nav-link text-lg text-gray-200 hover:text-white transition">Solutions</a>
-                <a href="#technology" class="nav-link text-lg text-gray-200 hover:text-white transition">Technology</a>
-                <a href="#careers" class="nav-link text-lg text-gray-200 hover:text-white transition">Careers</a>
-                <a href="#contact" class="nav-link text-lg text-gray-200 hover:text-white transition">Contact</a>
-            </nav>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 sm:px-6 lg:px-8 pt-2 pb-4">
-            <a href="#home" class="block py-2 text-lg text-gray-200 hover:text-white">Home</a>
-            <a href="#about" class="block py-2 text-lg text-gray-200 hover:text-white">About</a>
-            <a href="#solutions" class="block py-2 text-lg text-gray-200 hover:text-white">Solutions</a>
-            <a href="#technology" class="block py-2 text-lg text-gray-200 hover:text-white">Technology</a>
-            <a href="#careers" class="block py-2 text-lg text-gray-200 hover:text-white">Careers</a>
-            <a href="#contact" class="block py-2 text-lg text-gray-200 hover:text-white">Contact</a>
-        </div>
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 py-4">
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-3xl font-bold font-orbitron text-white tracking-widest"
+          >LARVRA</a
+        >
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="nav-link active text-lg text-gray-200 hover:text-white transition"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-lg text-gray-200 hover:text-white transition"
+            >About</a
+          >
+          <a
+            href="#solutions"
+            class="nav-link text-lg text-gray-200 hover:text-white transition"
+            >Solutions</a
+          >
+          <a
+            href="#technology"
+            class="nav-link text-lg text-gray-200 hover:text-white transition"
+            >Technology</a
+          >
+          <a
+            href="#careers"
+            class="nav-link text-lg text-gray-200 hover:text-white transition"
+            >Careers</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-lg text-gray-200 hover:text-white transition"
+            >Contact</a
+          >
+        </nav>
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-white focus:outline-none"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden px-4 sm:px-6 lg:px-8 bg-[#0A0A1A]">
+        <a
+          href="#home"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >About</a
+        >
+        <a
+          href="#solutions"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >Solutions</a
+        >
+        <a
+          href="#technology"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >Technology</a
+        >
+        <a
+          href="#careers"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >Careers</a
+        >
+        <a
+          href="#contact"
+          class="block py-4 text-lg text-gray-200 hover:text-white border-b border-gray-800"
+          >Contact</a
+        >
+      </div>
     </header>
 
     <main>
-        <!-- Section 1: Home -->
-        <section id="home" class="min-h-screen bg-[#0d0d2b] flex items-center justify-center pt-20">
-            <div id="particles-js"></div>
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="reveal">
-                    <h1 class="text-5xl md:text-7xl font-extrabold font-orbitron text-white mb-4 leading-tight typed-text">
-                        LEVEL UP YOUR REALITY
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-                        Larvra provides revolutionary gamified software solutions. We turn personal growth, team projects, and company goals into engaging, quantifiable experiences.
-                    </p>
-                    <a href="#solutions" class="inline-block bg-sky-500 text-white font-bold py-4 px-10 rounded-full text-lg neon-glow-button">
-                        Explore Our Systems
-                    </a>
-                </div>
-            </div>
-        </section>
+      <!-- Section 1: Home -->
+      <section
+        id="home"
+        class="min-h-screen bg-[#0d0d2b] flex items-center justify-center pt-20"
+      >
+        <div id="particles-js"></div>
+        <div
+          class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <div class="reveal">
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-orbitron text-white mb-4 leading-tight typed-text"
+            >
+              LEVEL UP YOUR REALITY
+            </h1>
+            <p
+              class="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 px-4"
+            >
+              Larvra provides revolutionary gamified software solutions. We turn
+              personal growth, team projects, and company goals into engaging,
+              quantifiable experiences.
+            </p>
+            <a
+              href="#solutions"
+              class="inline-block bg-sky-500 text-white font-bold py-3 px-8 md:py-4 md:px-10 rounded-full text-lg neon-glow-button"
+            >
+              Explore Our Systems
+            </a>
+          </div>
+        </div>
+      </section>
 
-        <!-- Section 2: About Us -->
-        <section id="about" class="py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold font-orbitron text-white">Forging the Future</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Our mission is to integrate motivational game mechanics into everyday challenges.</p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                    <div class="reveal-left">
-                        <img src="https://placehold.co/600x400/0A0A1A/00BFFF?text=Our+Vision" alt="Futuristic office vision" class="rounded-lg shadow-2xl">
-                    </div>
-                    <div class="reveal-right">
-                        <h3 class="text-3xl font-bold text-white mb-4">Our Vision</h3>
-                        <p class="text-gray-300 text-lg">We believe that human potential is unlocked through engagement and measurable progress. Larvra was founded on the principle that the systems driving growth in virtual worlds can be harnessed to create tangible, real-world success. We're not just building software; we're architecting a new paradigm for achievement.</p>
-                    </div>
-                </div>
+      <!-- Section 2: About Us -->
+      <section
+        id="about"
+        class="py-16 md:py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12 md:mb-16 reveal">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-white"
+            >
+              Forging the Future
+            </h2>
+            <p
+              class="text-base md:text-lg text-gray-400 mt-4 max-w-2xl mx-auto"
+            >
+              Our mission is to integrate motivational game mechanics into
+              everyday challenges.
+            </p>
+          </div>
 
-                <div class="timeline mt-16">
-                    <div class="timeline-container left reveal-left">
-                        <div class="timeline-content">
-                            <h2 class="text-xl font-bold text-white">2023 - The Genesis</h2>
-                            <p class="text-gray-400">Larvra is founded with a concept to gamify productivity tools.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container right reveal-right">
-                        <div class="timeline-content">
-                            <h2 class="text-xl font-bold text-white">2024 - Prototype Alpha</h2>
-                            <p class="text-gray-400">First internal version of the 'Ascent' system is developed and tested.</p>
-                        </div>
-                    </div>
-                     <div class="timeline-container left reveal-left">
-                        <div class="timeline-content">
-                            <h2 class="text-xl font-bold text-white">2025 - Beta Launch</h2>
-                            <p class="text-gray-400">Larvra Unity for teams enters closed beta with select partners.</p>
-                        </div>
-                    </div>
-                </div>
+          <div
+            class="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-16 md:mb-20"
+          >
+            <div class="reveal-left">
+              <img
+                src="https://placehold.co/600x400/0A0A1A/00BFFF?text=Our+Vision"
+                alt="Futuristic office vision"
+                class="rounded-lg shadow-2xl w-full"
+              />
             </div>
-        </section>
+            <div class="reveal-right">
+              <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                Our Vision
+              </h3>
+              <p class="text-gray-300 text-base md:text-lg">
+                We believe that human potential is unlocked through engagement
+                and measurable progress. Larvra was founded on the principle
+                that the systems driving growth in virtual worlds can be
+                harnessed to create tangible, real-world success. We're not just
+                building software; we're architecting a new paradigm for
+                achievement.
+              </p>
+            </div>
+          </div>
 
-        <!-- Section 3: Solutions -->
-        <section id="solutions" class="py-24 bg-[#0A0A1A]">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold font-orbitron text-white">Our Gamified Platforms</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Tailored systems for every level of ambition.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Solution Card 1 -->
-                    <div class="futuristic-card p-8 reveal" style="transition-delay: 100ms;">
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-white mb-3 font-orbitron">Larvra Ascent</h3>
-                            <p class="text-gray-300 mb-4">The ultimate personal development system. Gamify your life goals, habits, and skills. Level up in what matters most to you.</p>
-                             <a href="#" class="font-bold text-sky-400 hover:text-sky-300 transition">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Solution Card 2 -->
-                    <div class="futuristic-card p-8 reveal" style="transition-delay: 200ms;">
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-white mb-3 font-orbitron">Larvra Unity</h3>
-                            <p class="text-gray-300 mb-4">Transform team collaboration. Turn projects into epic quests, manage tasks with agile 'sprints', and reward team achievements.</p>
-                            <a href="#" class="font-bold text-sky-400 hover:text-sky-300 transition">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                    <!-- Solution Card 3 -->
-                    <div class="futuristic-card p-8 reveal" style="transition-delay: 300ms;">
-                         <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-white mb-3 font-orbitron">Larvra Apex</h3>
-                            <p class="text-gray-300 mb-4">An enterprise solution for corporate excellence. Align company-wide objectives, track KPIs with a live dashboard, and foster a culture of growth.</p>
-                             <a href="#" class="font-bold text-sky-400 hover:text-sky-300 transition">Learn More &rarr;</a>
-                        </div>
-                    </div>
-                </div>
+          <div class="timeline mt-12 md:mt-16">
+            <div class="timeline-container left reveal-left">
+              <div class="timeline-content">
+                <h2 class="text-xl font-bold text-white">2023 - The Genesis</h2>
+                <p class="text-gray-400">
+                  Larvra is founded with a concept to gamify productivity tools.
+                </p>
+              </div>
             </div>
-        </section>
+            <div class="timeline-container right reveal-right">
+              <div class="timeline-content">
+                <h2 class="text-xl font-bold text-white">
+                  2024 - Prototype Alpha
+                </h2>
+                <p class="text-gray-400">
+                  First internal version of the 'Ascent' system is developed and
+                  tested.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-container left reveal-left">
+              <div class="timeline-content">
+                <h2 class="text-xl font-bold text-white">2025 - Beta Launch</h2>
+                <p class="text-gray-400">
+                  Larvra Unity for teams enters closed beta with select
+                  partners.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Section 4: Technology -->
-        <section id="technology" class="py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold font-orbitron text-white">Core Architecture</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Built on a foundation of cutting-edge, scalable technology.</p>
+      <!-- Section 3: Solutions -->
+      <section id="solutions" class="py-16 md:py-24 bg-[#0A0A1A]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12 md:mb-16 reveal">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-white"
+            >
+              Our Gamified Platforms
+            </h2>
+            <p
+              class="text-base md:text-lg text-gray-400 mt-4 max-w-2xl mx-auto"
+            >
+              Tailored systems for every level of ambition.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            <!-- Solution Card 1 -->
+            <div
+              class="futuristic-card p-6 md:p-8 reveal"
+              style="transition-delay: 100ms"
+            >
+              <div class="relative z-10">
+                <div class="flex justify-center mb-4">
+                  <div
+                    class="w-16 h-16 rounded-full bg-sky-900/30 flex items-center justify-center"
+                  >
+                    <i class="fas fa-user-astronaut text-2xl text-sky-400"></i>
+                  </div>
                 </div>
-                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="reveal p-6 futuristic-card">
-                        <h3 class="text-xl font-bold text-white">AI & Machine Learning</h3>
-                        <p class="text-gray-400 mt-2">Adaptive quest generation and predictive analytics.</p>
-                    </div>
-                    <div class="reveal p-6 futuristic-card" style="transition-delay:100ms">
-                         <h3 class="text-xl font-bold text-white">Real-time Databases</h3>
-                        <p class="text-gray-400 mt-2">Instantaneous updates for collaborative environments.</p>
-                    </div>
-                     <div class="reveal p-6 futuristic-card" style="transition-delay:200ms">
-                         <h3 class="text-xl font-bold text-white">Cloud Agnostic</h3>
-                        <p class="text-gray-400 mt-2">Maximum flexibility and uptime across providers.</p>
-                    </div>
-                     <div class="reveal p-6 futuristic-card" style="transition-delay:300ms">
-                         <h3 class="text-xl font-bold text-white">End-to-End Encryption</h3>
-                        <p class="text-gray-400 mt-2">Your data and progress, secured at all levels.</p>
-                    </div>
-                </div>
+                <h3
+                  class="text-xl md:text-2xl font-bold text-white mb-3 font-orbitron"
+                >
+                  Larvra Ascent
+                </h3>
+                <p class="text-gray-300 mb-4 text-sm md:text-base">
+                  The ultimate personal development system. Gamify your life
+                  goals, habits, and skills. Level up in what matters most to
+                  you.
+                </p>
+                <a
+                  href="#"
+                  class="font-bold text-sky-400 hover:text-sky-300 transition flex items-center"
+                >
+                  Learn More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
             </div>
-        </section>
-        
-         <!-- Section 5: Careers -->
-        <section id="careers" class="py-24 bg-[#0A0A1A]">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold font-orbitron text-white">Join Our Guild</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">We are looking for pioneers, innovators, and game-changers. Ready for your next quest?</p>
+            <!-- Solution Card 2 -->
+            <div
+              class="futuristic-card p-6 md:p-8 reveal"
+              style="transition-delay: 200ms"
+            >
+              <div class="relative z-10">
+                <div class="flex justify-center mb-4">
+                  <div
+                    class="w-16 h-16 rounded-full bg-sky-900/30 flex items-center justify-center"
+                  >
+                    <i class="fas fa-users text-2xl text-sky-400"></i>
+                  </div>
                 </div>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <div class="job-posting bg-gray-900/50 p-6 rounded-lg reveal-left">
-                        <h3 class="text-2xl font-bold text-white">Lead Gameplay Engineer</h3>
-                        <p class="text-gray-400">Remote / Full-time</p>
-                    </div>
-                     <div class="job-posting bg-gray-900/50 p-6 rounded-lg reveal-right">
-                        <h3 class="text-2xl font-bold text-white">Senior UX/UI Designer</h3>
-                        <p class="text-gray-400">Alor Setar / Full-time</p>
-                    </div>
-                     <div class="job-posting bg-gray-900/50 p-6 rounded-lg reveal-left">
-                        <h3 class="text-2xl font-bold text-white">AI Systems Architect</h3>
-                        <p class="text-gray-400">Remote / Contract</p>
-                    </div>
-                </div>
-                 <div class="text-center mt-12 reveal">
-                     <a href="#contact" class="inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg neon-glow-button">
-                        Apply Now
-                    </a>
-                </div>
+                <h3
+                  class="text-xl md:text-2xl font-bold text-white mb-3 font-orbitron"
+                >
+                  Larvra Unity
+                </h3>
+                <p class="text-gray-300 mb-4 text-sm md:text-base">
+                  Transform team collaboration. Turn projects into epic quests,
+                  manage tasks with agile 'sprints', and reward team
+                  achievements.
+                </p>
+                <a
+                  href="#"
+                  class="font-bold text-sky-400 hover:text-sky-300 transition flex items-center"
+                >
+                  Learn More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
             </div>
-        </section>
+            <!-- Solution Card 3 -->
+            <div
+              class="futuristic-card p-6 md:p-8 reveal"
+              style="transition-delay: 300ms"
+            >
+              <div class="relative z-10">
+                <div class="flex justify-center mb-4">
+                  <div
+                    class="w-16 h-16 rounded-full bg-sky-900/30 flex items-center justify-center"
+                  >
+                    <i class="fas fa-crown text-2xl text-sky-400"></i>
+                  </div>
+                </div>
+                <h3
+                  class="text-xl md:text-2xl font-bold text-white mb-3 font-orbitron"
+                >
+                  Larvra Apex
+                </h3>
+                <p class="text-gray-300 mb-4 text-sm md:text-base">
+                  An enterprise solution for corporate excellence. Align
+                  company-wide objectives, track KPIs with a live dashboard, and
+                  foster a culture of growth.
+                </p>
+                <a
+                  href="#"
+                  class="font-bold text-sky-400 hover:text-sky-300 transition flex items-center"
+                >
+                  Learn More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-
-        <!-- Section 6: Contact -->
-        <section id="contact" class="py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold font-orbitron text-white">Get in Touch</h2>
-                    <p class="text-lg text-gray-400 mt-4 max-w-2xl mx-auto">Questions, partnerships, or early access requests? Send us a signal.</p>
-                </div>
-                <div class="max-w-xl mx-auto reveal">
-                    <form action="#" method="POST" class="space-y-6">
-                        <div>
-                            <input type="text" name="name" placeholder="Your Name" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
-                        </div>
-                        <div>
-                            <input type="email" name="email" placeholder="Your Email" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
-                        </div>
-                        <div>
-                            <textarea name="message" rows="4" placeholder="Your Message" class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition"></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="w-full md:w-auto bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg neon-glow-button">
-                                Send Signal
-                            </button>
-                        </div>
-                    </form>
-                </div>
+      <!-- Section 4: Technology -->
+      <section
+        id="technology"
+        class="py-16 md:py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12 md:mb-16 reveal">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-white"
+            >
+              Core Architecture
+            </h2>
+            <p
+              class="text-base md:text-lg text-gray-400 mt-4 max-w-2xl mx-auto"
+            >
+              Built on a foundation of cutting-edge, scalable technology.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center"
+          >
+            <div class="reveal p-6 futuristic-card">
+              <div class="mb-4 text-sky-400">
+                <i class="fas fa-brain text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                AI & Machine Learning
+              </h3>
+              <p class="text-gray-400 mt-2 text-sm">
+                Adaptive quest generation and predictive analytics.
+              </p>
             </div>
-        </section>
+            <div
+              class="reveal p-6 futuristic-card"
+              style="transition-delay: 100ms"
+            >
+              <div class="mb-4 text-sky-400">
+                <i class="fas fa-database text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Real-time Databases</h3>
+              <p class="text-gray-400 mt-2 text-sm">
+                Instantaneous updates for collaborative environments.
+              </p>
+            </div>
+            <div
+              class="reveal p-6 futuristic-card"
+              style="transition-delay: 200ms"
+            >
+              <div class="mb-4 text-sky-400">
+                <i class="fas fa-cloud text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Cloud Agnostic</h3>
+              <p class="text-gray-400 mt-2 text-sm">
+                Maximum flexibility and uptime across providers.
+              </p>
+            </div>
+            <div
+              class="reveal p-6 futuristic-card"
+              style="transition-delay: 300ms"
+            >
+              <div class="mb-4 text-sky-400">
+                <i class="fas fa-lock text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                End-to-End Encryption
+              </h3>
+              <p class="text-gray-400 mt-2 text-sm">
+                Your data and progress, secured at all levels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Careers -->
+      <section id="careers" class="py-16 md:py-24 bg-[#0A0A1A]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12 md:mb-16 reveal">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-white"
+            >
+              Join Our Guild
+            </h2>
+            <p
+              class="text-base md:text-lg text-gray-400 mt-4 max-w-2xl mx-auto"
+            >
+              We are looking for pioneers, innovators, and game-changers. Ready
+              for your next quest?
+            </p>
+          </div>
+          <div class="max-w-3xl mx-auto space-y-4 md:space-y-6">
+            <div
+              class="job-posting bg-gray-900/50 p-4 md:p-6 rounded-lg reveal-left"
+            >
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-bold text-white">
+                    Lead Gameplay Engineer
+                  </h3>
+                  <p class="text-gray-400">Remote / Full-time</p>
+                </div>
+                <i class="fas fa-chevron-down text-sky-400 text-xl"></i>
+              </div>
+              <div class="job-details mt-4">
+                <p class="text-gray-300 mb-2">
+                  We're looking for an experienced engineer to design and
+                  implement game mechanics for our productivity systems.
+                </p>
+                <ul class="text-gray-300 list-disc pl-5 mb-4">
+                  <li>5+ years experience with game development</li>
+                  <li>Proficiency in JavaScript/TypeScript and Node.js</li>
+                  <li>Experience with game design patterns</li>
+                </ul>
+                <button
+                  class="apply-btn bg-sky-500 text-white py-2 px-6 rounded-full text-sm neon-glow-button"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+            <div
+              class="job-posting bg-gray-900/50 p-4 md:p-6 rounded-lg reveal-right"
+            >
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-bold text-white">
+                    Senior UX/UI Designer
+                  </h3>
+                  <p class="text-gray-400">Alor Setar / Full-time</p>
+                </div>
+                <i class="fas fa-chevron-down text-sky-400 text-xl"></i>
+              </div>
+              <div class="job-details mt-4">
+                <p class="text-gray-300 mb-2">
+                  Create intuitive and engaging interfaces that make
+                  productivity feel like play.
+                </p>
+                <ul class="text-gray-300 list-disc pl-5 mb-4">
+                  <li>Portfolio demonstrating UX/UI work</li>
+                  <li>Experience with design systems</li>
+                  <li>Knowledge of gamification principles</li>
+                </ul>
+                <button
+                  class="apply-btn bg-sky-500 text-white py-2 px-6 rounded-full text-sm neon-glow-button"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+            <div
+              class="job-posting bg-gray-900/50 p-4 md:p-6 rounded-lg reveal-left"
+            >
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="text-xl md:text-2xl font-bold text-white">
+                    AI Systems Architect
+                  </h3>
+                  <p class="text-gray-400">Remote / Contract</p>
+                </div>
+                <i class="fas fa-chevron-down text-sky-400 text-xl"></i>
+              </div>
+              <div class="job-details mt-4">
+                <p class="text-gray-300 mb-2">
+                  Design and implement AI systems that personalize user
+                  experiences and adapt challenges.
+                </p>
+                <ul class="text-gray-300 list-disc pl-5 mb-4">
+                  <li>Experience with machine learning frameworks</li>
+                  <li>Background in recommendation systems</li>
+                  <li>Knowledge of adaptive difficulty systems</li>
+                </ul>
+                <button
+                  class="apply-btn bg-sky-500 text-white py-2 px-6 rounded-full text-sm neon-glow-button"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-8 md:mt-12 reveal">
+            <a
+              href="#contact"
+              class="inline-block bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg neon-glow-button"
+            >
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Contact -->
+      <section
+        id="contact"
+        class="py-16 md:py-24 bg-gradient-to-b from-[#0A0A1A] to-[#1a1a3d]"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-8 md:mb-12 reveal">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-white"
+            >
+              Get in Touch
+            </h2>
+            <p
+              class="text-base md:text-lg text-gray-400 mt-4 max-w-2xl mx-auto"
+            >
+              Questions, partnerships, or early access requests? Send us a
+              signal.
+            </p>
+          </div>
+          <div class="max-w-xl mx-auto reveal">
+            <form
+              id="contact-form"
+              action="#"
+              method="POST"
+              class="space-y-4 md:space-y-6"
+            >
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
+                />
+              </div>
+              <div>
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Your Message"
+                  required
+                  class="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
+                ></textarea>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="w-full md:w-auto bg-sky-500 text-white font-bold py-3 px-8 rounded-full text-lg neon-glow-button flex items-center justify-center"
+                >
+                  <span class="submit-text">Send Signal</span>
+                  <div class="spinner ml-2"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-[#050510] py-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-             <p class="text-2xl font-orbitron text-gray-200 mb-4">LARVRA</p>
-            <p>&copy; 2025 Larvra. All rights reserved. Ascend Beyond Limits.</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="hover:text-sky-400 transition">Twitter</a>
-                <a href="#" class="hover:text-sky-400 transition">LinkedIn</a>
-                <a href="#" class="hover:text-sky-400 transition">GitHub</a>
-            </div>
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500"
+      >
+        <p class="text-2xl font-orbitron text-gray-200 mb-4">LARVRA</p>
+        <p>&copy; 2025 Larvra. All rights reserved. Ascend Beyond Limits.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+          <a href="#" class="hover:text-sky-400 transition"
+            ><i class="fab fa-twitter text-xl"></i
+          ></a>
+          <a href="#" class="hover:text-sky-400 transition"
+            ><i class="fab fa-linkedin text-xl"></i
+          ></a>
+          <a href="#" class="hover:text-sky-400 transition"
+            ><i class="fab fa-github text-xl"></i
+          ></a>
         </div>
+      </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast">
+      <div class="toast-content">
+        <i class="fas fa-check-circle text-sky-400 mr-2"></i>
+        <span class="toast-message">Your message has been sent!</span>
+      </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Particles.js configuration
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#00BFFF" },
-                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-                    "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#00BFFF", "opacity": 0.4, "width": 1 },
-                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                    "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
-                },
-                "retina_detect": true
-            });
-
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            
-            // Close mobile menu on link click
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
-
-            // Smooth scrolling for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            // Header style change on scroll
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('py-2', window.scrollY > 50);
-                header.classList.toggle('py-4', window.scrollY <= 50);
-            });
-
-            // Active nav link highlighting on scroll
-            const sections = document.querySelectorAll('main section');
-            const navLinks = document.querySelectorAll('nav a');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.4 };
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const currentId = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === currentId) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => sectionObserver.observe(section));
-            
-            // Scroll reveal animation
-            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            revealElements.forEach(el => revealObserver.observe(el));
+      document.addEventListener("DOMContentLoaded", () => {
+        // Particles.js configuration
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#00BFFF" },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            opacity: { value: 0.5, random: false, anim: { enable: false } },
+            size: { value: 3, random: true, anim: { enable: false } },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#00BFFF",
+              opacity: 0.4,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              random: false,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+            },
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: { enable: true, mode: "repulse" },
+              onclick: { enable: true, mode: "push" },
+              resize: true,
+            },
+            modes: {
+              repulse: { distance: 100, duration: 0.4 },
+              push: { particles_nb: 4 },
+            },
+          },
+          retina_detect: true,
         });
-    </script>
-</body>
-</html>
 
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("open");
+          // Change icon based on menu state
+          if (mobileMenu.classList.contains("open")) {
+            mobileMenuButton.innerHTML =
+              '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+          } else {
+            mobileMenuButton.innerHTML =
+              '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>';
+          }
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            mobileMenuButton.innerHTML =
+              '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>';
+          });
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+        // Header style change on scroll
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+            header.classList.add("py-2");
+            header.classList.remove("py-4");
+          } else {
+            header.classList.remove("scrolled");
+            header.classList.remove("py-2");
+            header.classList.add("py-4");
+          }
+
+          // Show/hide back to top button
+          const backToTop = document.querySelector(".back-to-top");
+          if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+          } else {
+            backToTop.classList.remove("visible");
+          }
+        });
+
+        // Back to top functionality
+        document.querySelector(".back-to-top").addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Active nav link highlighting on scroll
+        const sections = document.querySelectorAll("main section");
+        const navLinks = document.querySelectorAll("nav a, #mobile-menu a");
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.4,
+        };
+        const sectionObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const currentId = entry.target.getAttribute("id");
+                navLinks.forEach((link) => {
+                  link.classList.remove("active");
+                  if (link.getAttribute("href").substring(1) === currentId) {
+                    link.classList.add("active");
+                  }
+                });
+              }
+            });
+          },
+          observerOptions
+        );
+        sections.forEach((section) => sectionObserver.observe(section));
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll(
+          ".reveal, .reveal-left, .reveal-right"
+        );
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealElements.forEach((el) => revealObserver.observe(el));
+
+        // Job posting accordion functionality
+        const jobPostings = document.querySelectorAll(".job-posting");
+        jobPostings.forEach((posting) => {
+          posting.addEventListener("click", () => {
+            posting.classList.toggle("active");
+            const icon = posting.querySelector("i");
+            if (posting.classList.contains("active")) {
+              icon.classList.remove("fa-chevron-down");
+              icon.classList.add("fa-chevron-up");
+            } else {
+              icon.classList.remove("fa-chevron-up");
+              icon.classList.add("fa-chevron-down");
+            }
+          });
+        });
+
+        // Apply button click handler
+        const applyButtons = document.querySelectorAll(".apply-btn");
+        applyButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent triggering the parent click event
+            document
+              .querySelector("#contact")
+              .scrollIntoView({ behavior: "smooth" });
+          });
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById("contact-form");
+        const submitText = document.querySelector(".submit-text");
+        const spinner = document.querySelector(".spinner");
+        const toast = document.querySelector(".toast");
+
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Show loading state
+          submitText.textContent = "Sending...";
+          spinner.style.display = "block";
+
+          // Simulate form submission
+          setTimeout(() => {
+            // Reset form
+            contactForm.reset();
+
+            // Show success message
+            submitText.textContent = "Send Signal";
+            spinner.style.display = "none";
+
+            // Show toast notification
+            toast.classList.add("show");
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 3000);
+          }, 1500);
+        });
+      });
+    </script>
+  </body>
+</html>
